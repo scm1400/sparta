@@ -24,9 +24,34 @@
             crossorigin="anonymous"></script>
 
     <title>스파르타코딩클럽 | 부트스트랩 연습하기</title>
+    <script>
+        $(document).ready(function () {
+            q1();
+        });
+
+        function q1() {
+            $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/sparta_api/rate",
+                data: {},
+                success: function (response) {
+                    let rate_ = response['rate']
+                    console.log(rate_)
+
+                    let temp_html = `<p class="blue">달러/원 환율: ${rate_}</p>`
+
+                    $('#rate').append(temp_html);
+                }
+            })
+        }
+    </script>
     <style>
         * {
-            font-family: 'Juaㅆㅅ', sans-serif;
+            font-family: 'Jua', sans-serif;
+        }
+        .blue{
+            color:blue;
+            font-weight: bold;
         }
 
         .wrap {
@@ -63,7 +88,8 @@
     </div>
     <div>
         <h2>갤럭시워치4 팝니다.<span class="price">가격: 25만원</span></h2>
-        <p>갤럭시워치 가지고싶습니다. 사주세요.</p>
+        <p id="rate">갤럭시워치 가지고싶습니다. 사주세요.</p>
+
     </div>
     <div>
         <form>
