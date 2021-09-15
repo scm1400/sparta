@@ -27,6 +27,7 @@
     <script>
         $(document).ready(function () {
             q1();
+            q3();
         });
 
         function q1() {
@@ -44,13 +45,57 @@
                 }
             })
         }
+
+        function q2() {
+            let name = $('#name').val()
+            let amount = $('#amount').val()
+            let address = $('#address').val()
+            let number = $('#number').val()
+
+            console.log(name, amount, address, number)
+
+            $.ajax({
+                type: "POST",
+                url: "/order",
+                data: {name_give: name, amount_give: amount, address_give: address, number_give: number},
+                success: function (response) {
+                    alert(response["msg"])
+                }
+            })
+        }
+
+        function q3() {
+            $.ajax({
+                type: "GET",
+                url: "/order",
+                data: {},
+                success: function (response) {
+                    let orders = response['all_orders']
+                    for (let i = 0; i < orders.length; i++) {
+                        let name = orders[i]['name']
+                        let address = orders[i]['address']
+                        let amount = orders[i]['amount']
+                        let number = orders[i]['number']
+
+                        let temp_html = `<tr>
+                                            <th scope="row">${name}</th>
+                                            <td>${amount}</td>
+                                            <td>${address}</td>
+                                            <td>${number}</td>
+                                        </tr>`
+                        $('#table_box').append(temp_html)
+                    }
+                }
+            })
+        }
     </script>
     <style>
         * {
             font-family: 'Jua', sans-serif;
         }
-        .blue{
-            color:blue;
+
+        .blue {
+            color: blue;
             font-weight: bold;
         }
 
@@ -97,14 +142,14 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">주문자 이름</span>
                 </div>
-                <input type="text" class="form-control" aria-label="Default"
+                <input type="text" class="form-control" id="name" aria-label="Default"
                        aria-describedby="inputGroup-sizing-default">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">수량</label>
+                    <label class="input-group-text" for="amount">수량</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01">
+                <select class="custom-select" id="amount">
                     <option selected>-- 수량을 선택하세요 --</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -115,22 +160,42 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">주소</span>
                 </div>
-                <input type="text" class="form-control" aria-label="Default"
+                <input type="text" id="address" class="form-control" aria-label="Default"
                        aria-describedby="inputGroup-sizing-default">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">전화번호</span>
                 </div>
-                <input type="text" class="form-control" aria-label="Default"
+                <input type="text" id="number" class="form-control" aria-label="Default"
                        aria-describedby="inputGroup-sizing-default">
             </div>
             <div class="btn_pos">
-                <button type="submit" class="btn btn-primary">주문하기</button>
+                <button onclick="q2()" type="submit" class="btn btn-primary">주문하기</button>
             </div>
 
         </form>
     </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">이름</th>
+            <th scope="col">수량</th>
+            <th scope="col">주소</th>
+            <th scope="col">전화번호</th>
+        </tr>
+        </thead>
+        <tbody id="table_box">
+        <tr>
+            <th scope="row">홍길동</th>
+            <td>1</td>
+            <td>서울시 동작구</td>
+            <td>010-1234-5678</td>
+        </tr>
+
+        </tbody>
+    </table>
 </div>
 
 </body>
