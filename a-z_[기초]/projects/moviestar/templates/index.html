@@ -37,10 +37,52 @@
         function showStar() {
             $.ajax({
                 type: 'GET',
-                url: '/api/list?sample_give=샘플데이터',
+                url: '/api/list',
                 data: {},
                 success: function (response) {
-                    alert(response['msg']);
+                    let lists = response['all_lists']
+                    console.log(lists)
+                    for(let i = 0; i< lists.length; i++){
+                        image = lists[i]['img_url']
+                        name = lists[i]['name']
+                        like = lists[i]['like']
+                        recent = lists[i]['recent']
+                        url = lists[i]['url']
+
+                        let temp_html = `<div class="card">
+                                            <div class="card-content">
+                                                <div class="media">
+                                                    <div class="media-left">
+                                                        <figure class="image is-48x48">
+                                                            <img
+                                                                    src="${image}"
+                                                                    alt="Placeholder image"
+                                                            />
+                                                        </figure>
+                                                    </div>
+                                                    <div class="media-content">
+                                                        <a href="${url}" target="_blank" class="star-name title is-4">${name} (좋아요: ${like})</a>
+                                                        <p class="subtitle is-6">${recent}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <footer class="card-footer">
+                                                <a href="#" onclick="likeStar('${name}')" class="card-footer-item has-text-info">
+                                                    위로!
+                                                    <span class="icon">
+                                                  <i class="fas fa-thumbs-up"></i>
+                                                </span>
+                                                </a>
+                                                <a href="#" onclick="deleteStar('${name}')" class="card-footer-item has-text-danger">
+                                                    삭제
+                                                    <span class="icon">
+                                                  <i class="fas fa-ban"></i>
+                                                </span>
+                                                </a>
+                                            </footer>
+                                        </div>`
+                        $('#star-box').append(temp_html)
+                    }
                 }
             });
         }
@@ -49,9 +91,10 @@
             $.ajax({
                 type: 'POST',
                 url: '/api/like',
-                data: {sample_give: '샘플데이터'},
+                data: {name_give: name},
                 success: function (response) {
                     alert(response['msg']);
+                    window.location.reload()
                 }
             });
         }

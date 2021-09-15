@@ -17,15 +17,21 @@ def home():
 # API 역할을 하는 부분
 @app.route('/api/list', methods=['GET'])
 def show_stars():
-    sample_receive = request.args.get('sample_give')
-    print(sample_receive)
-    return jsonify({'msg': 'list 연결되었습니다!'})
+    lists = list(db.mystar.find({}, {'_id': False}).sort('like', -1))
+
+    return jsonify({'all_lists': lists})
 
 
 @app.route('/api/like', methods=['POST'])
 def like_star():
-    sample_receive = request.form['sample_give']
-    print(sample_receive)
+    name_receive = request.form['name_give']
+
+    target = db.mystar.find_one({'name': name_receive})
+    current_like = target['like']
+    new_like =  current_like+1
+
+    db.mystar.update_one({'name':name_receive},{'$set':{'like':new_like}})
+
     return jsonify({'msg': 'like 연결되었습니다!'})
 
 
