@@ -28,17 +28,17 @@ def like_star():
 
     target = db.mystar.find_one({'name': name_receive})
     current_like = target['like']
-    new_like =  current_like+1
+    new_like = current_like + 1
 
-    db.mystar.update_one({'name':name_receive},{'$set':{'like':new_like}})
+    db.mystar.update_one({'name': name_receive}, {'$set': {'like': new_like}})
 
     return jsonify({'msg': 'like 연결되었습니다!'})
 
 
 @app.route('/api/delete', methods=['POST'])
 def delete_star():
-    sample_receive = request.form['sample_give']
-    print(sample_receive)
+    name_receive = request.form['name_give']
+    db.mystar.delete_one({'name': name_receive})
     return jsonify({'msg': 'delete 연결되었습니다!'})
 
 
