@@ -39,7 +39,7 @@ def saving():
     code_number = request.form['code_give'].zfill(6)
     code_receive = f'https://finance.naver.com/item/main.nhn?code={code_number}'
 
-    print(code_receive)
+    print(code_number)
 
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
@@ -48,12 +48,12 @@ def saving():
     soup = BeautifulSoup(data.text, 'html.parser')
 
     price = soup.select_one('#content > div.section.trade_compare > table > tbody > tr:nth-child(1) > td:nth-child(2)').text
-    total = soup.select_one('#_market_sum').text.strip().strip()
-    per = soup.select_one('#_per').text.strip()
+    total = soup.select_one('#content > div.section.trade_compare > table > tbody > tr:nth-child(4) > td:nth-child(2)').text.strip().split()[0]
+    per = soup.select_one('#content > div.section.trade_compare > table > tbody > tr:nth-child(14) > td:nth-child(2)').text.strip()
 
     print(price, total, per)
 
-    return jsonify({'msg': '저장되었습니다.'})
+    return jsonify({'price': price, 'total':total, 'per':per})
 
 
 if __name__ == '__main__':
