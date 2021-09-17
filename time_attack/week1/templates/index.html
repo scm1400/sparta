@@ -66,12 +66,12 @@
                     data: JSON.stringify({"market": list[0], "sector": list[1], "tag": list[2]}),
                     success: function (response) {
                         $('#testbox').empty()
-                        console.log(response[0]['name'])
-                        for (let i = 0; i < response.length; i++) {
-                            let name = response[i]['name']
-                            let code = response[i]['code']
 
-                            let temp_html = `<p>${name} <button value="${code}" onclick="get_info(${code})" type="button" class="btn btn-info">정보</button></p>`
+                        for (let i = 0; i < response.length; i++) {
+                            name = response[i]['name']
+                            code = response[i]['code'].replace(/(^0+)/,"")
+
+                            let temp_html = `<div>${name} <button value="${code}" onclick="get_info(${code})" type="button" class="btn btn-info">정보</button></div>`
                             $('#testbox').append(temp_html)
 
                         }
@@ -96,9 +96,9 @@
                     for (let i = 0; i < group.length; i++) {
 
                         name = group[i]['name']
-                        code = group[i]['code']
+                        codename = group[i]['code']
                         let temp_html = `<div class="custom-control custom-radio">
-                                              <input type="radio" id="customRadio${i}" name="customRadio" class="custom-control-input" value="${code}">
+                                              <input type="radio" id="customRadio${i}" name="customRadio" class="custom-control-input" value="${codename}">
                                               <label class="custom-control-label" for="customRadio${i}">${name}</label>
                                           </div>
                                         `
@@ -114,7 +114,7 @@
         }
 
         function get_info(code) {
-            console.log(code)
+
             $.ajax({
                 type: "POST",
                 url: "/api",
