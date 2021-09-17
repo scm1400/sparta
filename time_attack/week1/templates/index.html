@@ -36,7 +36,8 @@
         });
         let group
         let index = 0
-        function get_groups(){
+
+        function get_groups() {
             $.ajax({
                 type: "GET",
                 url: "/base/codes",
@@ -48,11 +49,11 @@
             })
         }
 
-        function button1(name) {
+        function button1() {
             $('#testbox').empty()
             $.ajax({
                 type: "GET",
-                url: "/codes?group="+group[index],
+                url: "/codes?group=" + group[index],
                 data: {},
                 success: function (response) {
                     let group = response['all_groups']
@@ -67,36 +68,11 @@
                                           </div>
                                         `
 
-                         $('#testbox').append(temp_html)
+                        $('#testbox').append(temp_html)
 
                     }
-                     $('#testbox').append(`<button onclick="button1('${group}')" type="button" class="btn btn-secondary">다음</button>`)
-                }
-            })
-
-                    function button1() {
-            $('#testbox').empty()
-            $.ajax({
-                type: "GET",
-                url: "/codes?group="+group[index],
-                data: {},
-                success: function (response) {
-                    let group = response['all_groups']
-                    console.log(group)
-                    for (let i = 0; i < group.length; i++) {
-
-                        let name = group[i]['name']
-
-                        let temp_html = `<div class="custom-control custom-radio">
-                                              <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                              <label class="custom-control-label" for="customRadio1">${name}</label>
-                                          </div>
-                                        `
-
-                         $('#testbox').append(temp_html)
-
-                    }
-                     $('#testbox').append(`<button onclick="button1('${group}')" type="button" class="btn btn-secondary">다음</button>`)
+                    $('#testbox').append(`<button onclick="button1('${group}')" type="button" class="btn btn-secondary">다음</button>`)
+                    index++
                 }
             })
         }
