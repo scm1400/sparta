@@ -30,16 +30,19 @@
         }
     </style>
     <script>
+        $(document).ready(function () {
+
+        });
         function button1() {
             $.ajax({
                 type: "GET",
                 url: "/base/codes",
                 data: {},
                 success: function (response) {
-                    let articles = response['all_groups']
-                    console.log(articles)
-                    for (let i = 0; i < articles.length; i++) {
-                        let title = articles[i]['name']
+                    let group = response
+                    console.log(group)
+                    for (let i = 0; i < group.length; i++) {
+                        let title = group[i]['name']
 
                         let temp_html = `<div class="custom-control custom-radio">
                                               <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
@@ -49,7 +52,7 @@
                                               <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
                                               <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
                                           </div>
-                                          <button onclick="button1()" type="button" class="btn btn-secondary">다음</button>
+                                          <button onclick="button1('${group}')" type="button" class="btn btn-secondary">다음</button>
                                         `
 
                         $('#test-box').empty()
@@ -58,37 +61,7 @@
                 }
             })
         }
-        function button_next() {
-            let index = 0;
 
-            $.ajax({
-                type: "GET",
-                url: "/recommend?group=market",
-                data: {},
-                success: function (response) {
-
-                    let articles = response['all_groups']
-                    console.log(articles)
-                    for (let i = 0; i < articles.length; i++) {
-                        let title = articles[i]['name']
-
-                        let temp_html = `<div class="custom-control custom-radio">
-                                              <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                              <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
-                                            </div>
-                                            <div class="custom-control custom-radio">
-                                              <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                              <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
-                                          </div>
-                                          <button onclick="button1()" type="button" class="btn btn-secondary">다음</button>
-                                        `
-
-                        $('#testbox').empty()
-                        $('#testbox').append(temp_html)
-                    }
-                }
-            })
-        }
     </script>
 </head>
 <body>

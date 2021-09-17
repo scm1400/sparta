@@ -15,10 +15,12 @@ def show_list():
     groups = list(db.codes.distinct("group"))
     return jsonify(groups)
 
-@app.route('/codes', methods=['GET'])
-def show_list():
+@app.route('/codes', methods=['POST'])
+def post_api():
     groups = list(db.codes.distinct("group"))
     return jsonify(groups)
+
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
