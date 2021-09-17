@@ -53,13 +53,23 @@
         function button1() {
             if (index == group.length) {
                 list[index - 1] = $('input[name=customRadio]:checked').val();
+                $('#testbox').empty()
                 $.ajax({
                     type: "POST",
                     url: '/stock',
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify({"market": list[0], "sector": list[1], "tag": list[2]}),
                     success: function (response) {
-                        console.log(response)
+                        console.log(response[0]['name'])
+                        for (let i = 0; i < response.length; i++) {
+                            let name = response[i]['name']
+                            let code = response[i]['code']
+
+                            let temp_html = `<p>${name} <button value="${code}" onclick="get_info(${code})" type="button" class="btn btn-info">정보</button></p>`
+                            $('#testbox').append(temp_html)
+
+                        }
+                        $('#testbox').append(`<button type="button" class="btn btn-secondary">다시선택</button>`)
                     }
                 })
             } else if (index >= 1) {
@@ -88,8 +98,19 @@
                         $('#testbox').append(temp_html)
 
                     }
-                    $('#testbox').append(`<button onclick="button1()" type="button" class="btn btn-secondary">다음</button>`)
+                    $('#testbox').append(`<button onclick="button1()" type="button" class="btn btn-success">다음</button>`)
                     index++
+                }
+            })
+        }
+
+        function get_info(code) {
+            $.ajax({
+                type: "POST",
+                url: "/api",
+                data: {code_give: code},
+                success: function (response) { // 성공하면
+                    alert(response["msg"]);
                 }
             })
         }
