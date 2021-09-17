@@ -48,6 +48,9 @@
         .custom-file {
             margin-bottom: 20px;
         }
+        .date{
+            font-size: 12px;
+        }
     </style>
 
     <script>
@@ -67,12 +70,14 @@
                         let title = articles[i]['title']
                         let content = articles[i]['content']
                         let file = articles[i]['file']
+                        let time = articles[i]['date']
 
                         let temp_html = `<div class="card">
                                         <img class="card-img-top" src="../static/${file}" alt="Card image cap">
                                         <div class="card-body">
                                             <h5 class="card-title">${title}</h5>
                                             <p class="card-text">${content}</p>
+                                            <p class="date">${time}</p>
                                         </div>
                                     </div>`
 

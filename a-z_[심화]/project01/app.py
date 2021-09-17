@@ -27,6 +27,7 @@ def save_diary():
 
     today = datetime.now()
     mytime = today.strftime('%Y-%m-%d-%H-%M-%S')
+    posttime = today.strftime('%Y-%m-%d')
     filename = f'file-{mytime}'
 
     save_to = f'static/{filename}.{extension}'
@@ -35,7 +36,8 @@ def save_diary():
     doc = {
         'title': title_receive,
         'content': content_receive,
-        'file': f'{filename}.{extension}'
+        'file': f'{filename}.{extension}',
+        'date': posttime
     }
 
     db.diary.insert_one(doc)
