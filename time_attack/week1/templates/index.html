@@ -36,6 +36,7 @@
         });
         let group
         let index = 0
+        let list
 
         function get_groups() {
             $.ajax({
@@ -44,12 +45,14 @@
                 data: {},
                 success: function (response) {
                     group = response
-                    console.log(group)
+                    console.log(group.length)
                 }
             })
         }
 
         function button1() {
+            if(index >= group.length) return
+
             $('#testbox').empty()
             $.ajax({
                 type: "GET",
@@ -63,15 +66,15 @@
                         let name = group[i]['name']
 
                         let temp_html = `<div class="custom-control custom-radio">
-                                              <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                              <label class="custom-control-label" for="customRadio1">${name}</label>
+                                              <input type="radio" id="customRadio${i}" name="customRadio" class="custom-control-input">
+                                              <label class="custom-control-label" for="customRadio${i}">${name}</label>
                                           </div>
                                         `
 
                         $('#testbox').append(temp_html)
 
                     }
-                    $('#testbox').append(`<button onclick="button1('${group}')" type="button" class="btn btn-secondary">다음</button>`)
+                    $('#testbox').append(`<button onclick="button1()" type="button" class="btn btn-secondary">다음</button>`)
                     index++
                 }
             })
@@ -91,10 +94,6 @@
                 <button onclick="button1()" type="button" class="btn btn-primary">추천시작</button>
             </div>
         </div>
-    </div>
-
-    <div class="card-columns" id="card-box">
-
     </div>
 </div>
 
