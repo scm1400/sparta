@@ -15,10 +15,16 @@ def show_list():
     groups = list(db.codes.distinct("group"))
     return jsonify(groups)
 
-@app.route('/codes', methods=['POST'])
-def post_api():
-    groups = list(db.codes.distinct("group"))
-    return jsonify(groups)
+@app.route('/codes', methods=['GET'])
+def group_api():
+    group_receive = request.args.get('group')
+    print(group_receive)
+
+    all_groups = list(db.codes.find({'group':group_receive},{'_id':False}))
+
+    print(all_groups[0])
+
+    return jsonify({'all_groups':all_groups})
 
 
 
