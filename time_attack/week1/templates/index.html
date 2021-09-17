@@ -51,13 +51,20 @@
         }
 
         function button1() {
-            if(index == group.length)
-            {
-                list[index-1] = $('input[name=customRadio]:checked').val();
-            }
-            else if(index>=1){
-                list[index-1] = $('input[name=customRadio]:checked').val();
-                console.log(list[index-1]);
+            if (index == group.length) {
+                list[index - 1] = $('input[name=customRadio]:checked').val();
+                $.ajax({
+                    type: "POST",
+                    url: '/stock',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({"market": list[0], "sector": list[1], "tag": list[2]}),
+                    success: function (response) {
+                        console.log(response)
+                    }
+                })
+            } else if (index >= 1) {
+                list[index - 1] = $('input[name=customRadio]:checked').val();
+                console.log(list[index - 1]);
             }
             $('#testbox').empty()
             $.ajax({
@@ -66,13 +73,14 @@
                 data: {},
                 success: function (response) {
                     let group = response['all_groups']
+
                     console.log(group)
                     for (let i = 0; i < group.length; i++) {
 
                         let name = group[i]['name']
-
+                        let code = group[i]['code']
                         let temp_html = `<div class="custom-control custom-radio">
-                                              <input type="radio" id="customRadio${i}" name="customRadio" class="custom-control-input" value="${name}">
+                                              <input type="radio" id="customRadio${i}" name="customRadio" class="custom-control-input" value="${code}">
                                               <label class="custom-control-label" for="customRadio${i}">${name}</label>
                                           </div>
                                         `

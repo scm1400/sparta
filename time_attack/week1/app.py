@@ -22,9 +22,14 @@ def group_api():
 
     all_groups = list(db.codes.find({'group':group_receive},{'_id':False}))
 
-    print(all_groups[0])
-
     return jsonify({'all_groups':all_groups})
+
+@app.route('/stock', methods = ['POST'])
+def save_info():
+    info = request.json
+    # print(info['market'])
+    stocks = list(db.stocks.find({'sector':info['sector'],'market':info['market'],'tag':info['tag']},{'_id':False}))
+    return jsonify(stocks)
 
 
 
