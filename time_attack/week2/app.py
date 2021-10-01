@@ -44,7 +44,7 @@ def get_post():
 @app.route('/post', methods=['DELETE'])
 def delete_post():
     idx_receive = request.form['idx_give']
-    db.dbStock.delete_one({"idx": idx_receive})
+    db.dbStock.delete_one({'idx': int(idx_receive)})
     return {"result": "success"}
 
 

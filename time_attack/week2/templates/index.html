@@ -101,7 +101,7 @@
                         let title = posts[i]['title']
                         let content = posts[i]['content']
                         let date = posts[i]['reg_date']
-                        console.log(title, content, date)
+                        console.log(idx)
 
                         let temp_html = `<tr>
                                             <td>${index}</td>
@@ -124,7 +124,7 @@
                 url: '/post',
                 data: {idx_give: idx},
                 success: function (response) {
-                    alert(response['msg']);
+                    alert(response['result']);
                     window.location.reload()
                 }
             });
