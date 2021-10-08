@@ -72,7 +72,7 @@
             }
         }
 
-        function update_openClose(idx,title,content) {
+        function update_openClose(idx, title, content) {
             temp_html = `<div id="post-box" class="form-post">
                             <div>
                                 <div class="form-group">
@@ -83,7 +83,7 @@
                                     <label for="post-content2">간단한내용</label>
                                     <textarea id="post-content2" class="form-control" rows="2">${content}</textarea>
                                 </div>
-                                <button type="button" class="btn btn-primary" onclick="postArticle('${idx}')">기사저장</button>
+                                <button type="button" class="btn btn-primary" onclick="updateArticle('${idx}')">기사저장</button>
                             </div>
                         </div>`
             $('#box_container').append(temp_html)
@@ -104,7 +104,7 @@
             })
         }
 
-        function postArticle(idx) {
+        function updateArticle(idx) {
             let title = $('#post-title2').val()
             let content = $('#post-content2').val()
 
@@ -195,6 +195,51 @@
             })
         }
 
+        let sort_index = 0
+
+        function sortArticles() {
+            console.log(sort_index)
+            $('#list-post').empty()
+            $.ajax({
+                type: "GET",
+                url: "/post",
+                data: {},
+                success: function (response) {
+                    let posts = response['all_posts']
+                    if (sort_index === 0) {
+                        posts.sort((sort_descending))
+                        sort_index = 1
+                    } else {
+                        sort_index = 0
+                        posts.sort((sort_ascending))
+                    }
+
+                    for (let i = 0; i < posts.length; i++) {
+                        let index = i + 1
+                        let idx = posts[i]['idx']
+                        let title = posts[i]['title']
+                        let content = posts[i]['content']
+                        let date = posts[i]['reg_date']
+                        let cnt = posts[i]['cnt']
+                        if (cnt == null) {
+                            cnt = 0
+                        }
+                        console.log(idx)
+
+                        let temp_html = `<tr>
+                                            <td>${index}</td>
+                                            <td><a onclick="open_modal('${idx}')">${title}</a></td>
+                                            <td>${date}</td>
+                                            <td>${cnt}</td>
+                                            <td><button onclick="deleteArticle('${idx}')" type="button" class="btn btn-danger">삭제</button></td>
+                                            <td><button onclick="update_openClose('${idx}','${title}','${content}')" type="button" class="btn btn-primary">수정</button></td>
+                                        </tr>`
+                        $('#list-post').append(temp_html)
+                    }
+                }
+            })
+        }
+
         function makeListPost(post, index) {
 
         }
@@ -215,6 +260,17 @@
             let dateA = new Date(a['reg_date']).getTime();
             let dateB = new Date(b['reg_date']).getTime();
             return dateA < dateB ? 1 : -1;
+        }
+
+        function sort_descending(a, b) {
+            let A = a['cnt']
+            let B = b['cnt']
+            return A-B
+        }
+        function sort_ascending(a, b) {
+            let A = a['cnt']
+            let B = b['cnt']
+            return B-A
         }
 
 
@@ -253,7 +309,9 @@
             <th scope="col">#</th>
             <th scope="col">타이틀</th>
             <th scope="col">날짜</th>
-            <th scope="col">조회</th>
+            <th scope="col" rowspan="2"><a onclick="sortArticles()">조회</a><span class="icon">
+    <i class="fas fa-arrow-right"></i>
+  </span></th>
             <th scope="col">삭제</th>
             <th scope="col">수정</th>
         </tr>
