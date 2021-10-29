@@ -24,6 +24,7 @@ def index():
 def save_post():
     title = request.form.get('title')
     content = request.form.get('content')
+    username = request.form.get('username')
     article_count = db.article.count()
     if article_count == 0:
         max_value = 1
@@ -34,6 +35,7 @@ def save_post():
         'idx': max_value,
         'title': title,
         'content': content,
+        'username': username,
         'read_count': 0,
         'reg_date': datetime.now()
     }

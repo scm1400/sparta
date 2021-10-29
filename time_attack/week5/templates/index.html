@@ -81,6 +81,12 @@
             let url = $("#post-url").val();
             let comment = $("#post-comment").val();
             let idx = $("#post-idx").val();
+            let username
+            if ("{{session['logged_in']}}" == "True") {
+                username = "{{session['username']}}"
+            } else {
+                username = "비회원"
+            }
 
             if (idx != '') {
                 $.ajax({
@@ -100,7 +106,7 @@
                 $.ajax({
                     type: "POST",
                     url: "/article",
-                    data: {title: url, content: comment},
+                    data: {title: url, content: comment, username: username},
                     success: function (response) {
                         if (response["result"] == "success") {
                             alert("포스팅 성공!");
@@ -184,6 +190,7 @@
             let tempHtml = ` <tr>
                       <th scope="row">${index}</th>
                       <td><a href="#" onclick="readArticle(${post['idx']})">${post['title']}</td>
+                        <td>${post['username']}</td>
                       <td>${post['reg_date']}</td>
                       <td>${post['read_count']}</td>
                       <td><button type="button" class="btn btn-danger" onclick="deleteArticle(${post['idx']})">삭제</button></td>
@@ -396,6 +403,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">제목</th>
+            <th scope="col">글쓴이</th>
             <th scope="col">날짜</th>
             <th scope="col">조회<span onclick="setOrder()" id="viewOrder">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
