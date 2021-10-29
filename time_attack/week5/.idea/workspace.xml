@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="797f906c-dc8f-4766-bb3e-c88dba420ee5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Algorithm/team_study/스택수열.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Algorithm/team_study/좌표정렬하기2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Algorithm/team_study/회전하는 큐.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Algorithm/week_1/하노이.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/.idea/rds.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/PyMySQL-1.0.2.dist-info/INSTALLER" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/PyMySQL-1.0.2.dist-info/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/PyMySQL-1.0.2.dist-info/METADATA" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/PyMySQL-1.0.2.dist-info/RECORD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/PyMySQL-1.0.2.dist-info/REQUESTED" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/PyMySQL-1.0.2.dist-info/WHEEL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/PyMySQL-1.0.2.dist-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/lambda_function.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/_auth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/charset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/connections.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/constants/CLIENT.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/constants/COMMAND.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/constants/CR.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/constants/ER.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/constants/FIELD_TYPE.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/constants/FLAG.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/constants/SERVER_STATUS.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/constants/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/converters.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/cursors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/err.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/optionfile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/protocol.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/pymysql/times.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/bbs/python.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/PyMySQL-1.0.2.dist-info/INSTALLER" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/PyMySQL-1.0.2.dist-info/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/PyMySQL-1.0.2.dist-info/METADATA" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/PyMySQL-1.0.2.dist-info/RECORD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/PyMySQL-1.0.2.dist-info/REQUESTED" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/PyMySQL-1.0.2.dist-info/WHEEL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/PyMySQL-1.0.2.dist-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/lambda_function.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/_auth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/charset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/connections.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/constants/CLIENT.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/constants/COMMAND.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/constants/CR.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/constants/ER.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/constants/FIELD_TYPE.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/constants/FLAG.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/constants/SERVER_STATUS.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/constants/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/converters.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/cursors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/err.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/optionfile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/protocol.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/pymysql/times.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rds/python/python.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/week5.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="20Aycy9jjz7Xqs2jEy0ZlXWglsH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="week5" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.app" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="797f906c-dc8f-4766-bb3e-c88dba420ee5" name="Changes" comment="" />
+      <created>1635501770508</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1635501770508</updated>
+      <workItem from="1635501779264" duration="3768000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/week5$app.coverage" NAME="app Coverage Results" MODIFIED="1635505145324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
