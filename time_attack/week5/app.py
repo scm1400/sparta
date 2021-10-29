@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flask import Flask, render_template, jsonify, request, session
+from flask import Flask, render_template, jsonify, request, session, redirect
 from pymongo import MongoClient
 
 app = Flask(__name__)
@@ -133,6 +133,11 @@ def login():
         session['logged_in'] = True
         session['username'] = username
         return session
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect("/")
 
 
 if __name__ == "__main__":

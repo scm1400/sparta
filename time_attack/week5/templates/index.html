@@ -62,19 +62,7 @@
                 perPage = $(this).val();
                 showArticles(1)
             })
-            $.ajax({
-                type: 'GET',
-                url: `/`,
-                success: function (res) {
-                    console.log(res)
-                    if (res['result'] == 'success') {
-                        $('#login_button').addClass("is-hidden")
 
-
-                        is_authenticated = true
-                    }
-                }
-            })
         });
 
         function openClose() {
@@ -292,11 +280,16 @@
                 }
             })
         }
+
+        function logout() {
+            location.href = "/logout"
+        }
     </script>
 
 </head>
 
 <body>
+
 <div class="wrap">
     <div class="jumbotron">
         <h1 class="display-4">질문합시다!!</h1>
@@ -304,12 +297,19 @@
         <p class="lead">
             <button onclick="openClose()" id="btn-post-box" type="button" class="btn btn-primary">포스팅 박스 열기
             </button>
+            {% if session['logged_in'] == True :%}
+            <button onclick="logout()" type="button" class="btn btn-danger">로그아웃
+            </button>
+            {% else %}
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2"
                     data-whatever="@getbootstrap">로그인
             </button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
                     data-whatever="@getbootstrap">회원가입
             </button>
+            {% endif %}
+
+
         </p>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
