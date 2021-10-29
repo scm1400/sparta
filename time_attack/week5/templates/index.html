@@ -121,6 +121,7 @@
 
         function showArticles(curPage) {
             let searchTitle = $("#searchTitle").val();
+
             $.ajax({
                 type: "GET",
                 url: `/articles?perPage=${perPage}&curPage=${curPage}&order=${order}&searchTitle=${searchTitle}`,
@@ -128,6 +129,34 @@
                 success: function (response) {
                     $("#list-post").empty();
                     let articles = response["articles"];
+                    let pagingInfo = response["pagingInfo"];
+                    for (let i = 0; i < articles.length; i++) {
+                        let num = response["pagingInfo"]["totalCount"] - (perPage * (curPage - 1)) - i
+                        makeListPost(articles[i], num);
+                    }
+                    makePaging(pagingInfo);
+                }
+            })
+        }
+
+        function showMyArticles(curPage) {
+            let searchTitle = $("#searchTitle").val();
+            let myname = "{{session['username']}}";
+            let articles = new Array();
+            $.ajax({
+                type: "GET",
+                url: `/articles?perPage=${perPage}&curPage=${curPage}&order=${order}&searchTitle=${searchTitle}`,
+                data: {},
+                success: function (response) {
+                    $("#list-post").empty();
+                    response["articles"].forEach(function (item){
+                        if(item.username == myname)
+                        {
+                            articles.push(item)
+                            console.log(item)
+                        }
+                    })
+
                     let pagingInfo = response["pagingInfo"];
                     for (let i = 0; i < articles.length; i++) {
                         let num = response["pagingInfo"]["totalCount"] - (perPage * (curPage - 1)) - i
@@ -398,6 +427,15 @@
             <option value="15">15</option>
         </select>
     </div>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a onclick="showArticles(1)" class="nav-link active" data-toggle="tab" href="#all-articles">전체 글</a>
+        </li>
+        <li class="nav-item">
+            <a onclick="showMyArticles(1)" class="nav-link" data-toggle="tab" href="#my-articles">내 글</a>
+        </li>
+    </ul>
+
     <table class="table">
         <thead>
         <tr>
