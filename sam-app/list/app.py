@@ -3,7 +3,9 @@ from pymongo import MongoClient
 import boto3
 from urllib import parse
 import requests
-import jwt
+
+type = 'json'
+age = 21
 
 
 def get_secret():
@@ -26,13 +28,24 @@ def db_ops():
 
 
 def lambda_handler(event, context):
-
     secrets = get_secret()
     api_key = secrets['API_KEY']
+    print(api_key)
+    print(event['queryStringParameters'])
 
-    query = event['queryStringParameters']['query']
-    proposer_name = event['queryStringParameters']['proposer']
-    condition = event['queryStringParameters']['condition']
+    if "query" in event['queryStringParameters']:
+        query = event['queryStringParameters']['query']
+    else:
+        query = None
+    if "proposer_name" in event['queryStringParameters']:
+        proposer_name = event['queryStringParameters']['proposer']
+    else:
+        proposer_name = None
+    if "condition" in event['queryStringParameters']:
+        condition = event['queryStringParameters']['condition']
+    else:
+        condition = None
+
     pIndex = event['queryStringParameters']['offset']
 
 
@@ -47,15 +60,14 @@ def lambda_handler(event, context):
 
         data = requests.get('https://open.assembly.go.kr/portal/openapi/nzmimeepazxkubdpn?' + query)
     # == 법안발의 제안자명으로 검색==#
-    # http://localhost:5000/api/laws?offset=1&proposer=%EA%B9%80%EA%B4%91%EB%A6%BC&condition=%EC%A0%9C%EC%95%88%EC%9E%90
     elif condition == '제안자':
         url = f'https://open.assembly.go.kr/portal/openapi/nzmimeepazxkubdpn?Key={api_key}&Type={type}&AGE={age}&PROPOSER={proposer_name}&pIndex={pIndex}&pSize=10'
         query = encode_querystring(url)
+
         data = requests.get('https://open.assembly.go.kr/portal/openapi/nzmimeepazxkubdpn?' + query)
-    else:
-        data = "nodata"
 
     data = data.json()
+    print(data)
     total_count = data['nzmimeepazxkubdpn'][0]['head'][0]['list_total_count']
     data = data['nzmimeepazxkubdpn'][1]['row']
 
@@ -73,18 +85,18 @@ def lambda_handler(event, context):
             'url': d['DETAIL_LINK'],  # 상세내용 크롤링 link
             'total_count': total_count
         })
+    print(response)
+
+    body = json.dumps(response)
 
     return {
         "statusCode": 200,
         'headers': {
             'Access-Control-Allow-Headers': 'Content-Type',
             'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'OPTIONS,GET'
+            'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
         },
-        "body": json.dumps({
-            "result": "success",
-            "articles": response,
-        }),
+        "body": body
     }
 
 
