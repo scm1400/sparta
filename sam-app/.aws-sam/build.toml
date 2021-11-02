@@ -17,4 +17,12 @@ manifest_hash = ""
 packagetype = "Zip"
 functions = ["ListFunction"]
 
+[function_build_definitions.db00c4f7-7784-481f-817a-f12c14d0ddb4]
+codeuri = "C:\\Users\\scm14\\Desktop\\Git\\Sparta\\sam-app\\naver"
+runtime = "python3.9"
+architecture = "x86_64"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["naverLoginFunction"]
+
 [layer_build_definitions]

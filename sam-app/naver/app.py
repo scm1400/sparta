@@ -65,6 +65,9 @@ def lambda_handler(event, context):
         "exp": datetime.utcnow() + timedelta(microseconds=60 * 60 * 24)
     }
 
+
+    
+
     token = jwt.encode(payload, secret,"HS256")
 
     return {
