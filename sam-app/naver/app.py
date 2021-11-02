@@ -7,9 +7,6 @@ import requests
 from datetime import datetime, timedelta
 import jwt
 
-type = 'json'
-age = 21
-
 
 def get_secret():
     session = boto3.session.Session()
