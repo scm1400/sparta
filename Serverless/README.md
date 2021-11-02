@@ -31,6 +31,16 @@ nginx 중지/실행 : `sudo service nginx stop/start`
 
 http로 접속해보기 : `curl localhost`
 
+파일 찾기 : `sudo find / -name nginx*`
+
+VI 종료하기 : `:q or :q!`
+
+파일 복사하기 : `sudo cp ~/index.html /var/www/html` 복사할 파일 경로 -> 복사할 위치
+
+http와 https 차이 : 인증서로 암복호화를 해서 통신
+
+CDN 기능 : 
+
 `histroty`
 
 웹서버 종류
