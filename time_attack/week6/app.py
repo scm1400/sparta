@@ -1,17 +1,24 @@
 from datetime import datetime, timedelta
 from functools import wraps
 
+from flask_socketio import SocketIO, emit
 from flask import Flask, render_template, jsonify, request, Response, g
 from pymongo import MongoClient
 import jwt
 import bcrypt
 
 app = Flask(__name__)
+socketio = SocketIO(app)
 
 client = MongoClient("mongodb://localhost:27017/")
 db = client.dbStock
 secret = "secrete"
 algorithm = "HS256"
+
+
+@socketio.on('notif')
+def recieve_message(json_data):
+    emit("response", {'message': '댓글이 달렸다!'})
 
 
 def login_check(f):
@@ -58,7 +65,7 @@ def save_post():
     if article_count == 0:
         max_value = 1
     else:
-        max_value = db.article.find_one(sort=[("idx", -1)])['idx'] + 1
+        max_value = int(db.article.find_one(sort=[("idx", -1)])['idx']) + 1
 
     post = {
         'idx': max_value,

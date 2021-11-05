@@ -20,6 +20,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
 
     <!-- 구글폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
@@ -144,6 +145,10 @@
                     success: function (response) {
                         if (response["result"] == "success") {
                             alert("댓글 달기 성공!");
+                            let socket = io.connect('http://' + document.domain + ':' + location.port);
+                            socket.on('notif', function () {
+                                alert('Received message');
+                            });
                             window.location.reload();
                         } else {
                             alert("서버 오류!");
@@ -221,7 +226,7 @@
                     let comments = response['article']['comments']
                     let temp_html = ``
                     console.log(comments)
-                    for (comment in comments){
+                    for (comment in comments) {
                         temp_html = `<li class="list-group-item">${comments[comment]}</li>`
                         $("#modal-comment").append(temp_html);
                     }
