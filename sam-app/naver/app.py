@@ -66,7 +66,7 @@ def lambda_handler(event, context):
     }
 
 
-    
+
 
     token = jwt.encode(payload, secret,"HS256")
 
