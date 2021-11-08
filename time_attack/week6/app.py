@@ -17,8 +17,8 @@ algorithm = "HS256"
 
 
 @socketio.on('notif')
-def recieve_message(json_data):
-    emit("response", {'message': '댓글이 달렸다!'})
+def recieve_message():
+    socketio.emit("response", {'message': '댓글이 달렸다!'})
 
 
 def login_check(f):

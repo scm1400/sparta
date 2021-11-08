@@ -58,6 +58,7 @@
         let listType = "all";
 
         $(document).ready(function () {
+            var socket = io.connect('http://localhost:5000');
             $("#cards-box").html("");
             showArticles(1);
             $("#perPagingSelect").change(function () {
@@ -145,7 +146,7 @@
                     success: function (response) {
                         if (response["result"] == "success") {
                             alert("댓글 달기 성공!");
-                            let socket = io.connect('http://' + document.domain + ':' + location.port);
+                            let socket = io.connect('http://localhost:5000');
                             socket.on('notif', function () {
                                 alert('Received message');
                             });
