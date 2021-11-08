@@ -1,24 +1,21 @@
 from datetime import datetime, timedelta
 from functools import wraps
 
-from flask_socketio import SocketIO, emit
 from flask import Flask, render_template, jsonify, request, Response, g
 from pymongo import MongoClient
 import jwt
 import bcrypt
+from flask_socketio import SocketIO
 
 app = Flask(__name__)
-socketio = SocketIO(app)
+app.config['SECRET_KEY'] = 'secret!'
 
 client = MongoClient("mongodb://localhost:27017/")
 db = client.dbStock
 secret = "secrete"
 algorithm = "HS256"
 
-
-@socketio.on('notif')
-def recieve_message():
-    socketio.emit("response", {'message': '댓글이 달렸다!'})
+socketio = SocketIO(app)
 
 
 def login_check(f):
@@ -86,6 +83,10 @@ def save_comment():
     comment = request.form.get('comment')
     print(comment)
     db.article.update_one({'idx': int(idx)}, {'$push': {'comments': comment}})
+
+    article = db.article.find_one({'idx': int(idx)})
+    socketio.emit(article['writer'],"ok")
+
     return jsonify({"result": "success"})
 
 
@@ -191,4 +192,4 @@ def login_user():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    socketio.run(app, debug=True)
