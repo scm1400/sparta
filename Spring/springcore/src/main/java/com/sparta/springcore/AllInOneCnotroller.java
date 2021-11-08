@@ -1,5 +1,8 @@
 package com.sparta.springcore;
 
+import com.sparta.springcore.domain.Product;
+import com.sparta.springcore.dto.ProductMypriceRequestDto;
+import com.sparta.springcore.dto.ProductRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.sql.*;
@@ -8,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor // final로 선언된 멤버 변수를 자동으로 생성합니다.
-@RestController // JSON으로 데이터를 주고받음을 선언합니다.
+//@RestController // JSON으로 데이터를 주고받음을 선언합니다.
 public class AllInOneCnotroller {
     // 등록된 전체 상품 목록 조회
     @GetMapping("/api/products")
