@@ -1,4 +1,4 @@
-package com.sparta.springcore.util;
+package com.sparta.springcore.domain;
 
 import lombok.Getter;
 import lombok.Setter;
