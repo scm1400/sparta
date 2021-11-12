@@ -52,8 +52,29 @@
         }
     </style>
     <script>
+
+        $(document).ready(function() {
+            showArticle()
+        })
+
+        function showArticle() {
+
+            $.ajax({
+                type: "GET",
+                url: "/post",
+                data: {},
+                success: function (response) {
+
+                    console.log(response)
+                    let tempHtml = `${response}`
+                    $("#article").append(tempHtml);
+                    $("#article").val(response);
+                }
+            })
+        }
+
         function postingArticle() {
-            if (confirm("저장된 메시지를 확인하시겠어요?") == true){    //확인
+            if (confirm("저장된 메시지를 확인하시겠어요?") == true) {    //확인
 
                 let content = $("#content").val();
 
@@ -64,13 +85,14 @@
                     success: function (response) {
 
                         console.log(response)
-                        let tempHtml =`${response}`
+                        let tempHtml = `${response}`
                         alert("포스팅 업데이트 성공!");
                         $("#article").append(tempHtml);
+                        $("#article").val(response);
                     }
                 })
 
-            }else{   //취소
+            } else {   //취소
 
                 return;
 

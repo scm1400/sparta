@@ -2,9 +2,7 @@ package com.app.week7.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,10 +10,20 @@ import java.util.List;
 public class PostController
 {
     @PostMapping("/post")
-    public String write(Model model, @RequestParam("content") String content) throws Exception
+    public @ResponseBody
+    String write(Model model, @RequestParam("content") String content) throws Exception
     {
+        model.addAttribute("content", content);
+        String a = content;
+        System.out.println(a);
+        return a;
+    }
 
-        System.out.println(content);
+    @GetMapping("/post")
+    public @ResponseBody String show(Model model) throws Exception
+    {
+        String content = (String) model.getAttribute("content");
+
         return content;
     }
 }
