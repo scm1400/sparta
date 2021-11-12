@@ -14,7 +14,8 @@ public class PostController
     @PostMapping("/post")
     public String write(Model model, @RequestParam("content") String content) throws Exception
     {
+
         System.out.println(content);
-        return "redirect:/";
+        return content;
     }
 }
