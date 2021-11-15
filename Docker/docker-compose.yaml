@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  some-springboot:
+    image: my-springboot
+    ports:
+      - 8080:8080
+    networks:
+      - backend
+  some-mysql:
+    image: mysql
+    volumes:
+      - /users/scm14/mysql-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+    networks:
+      - backend
+networks:
+  backend:
