@@ -24,13 +24,13 @@ public class ArticleController {
     @GetMapping("/articles")
     public List<Article> getArticles(@RequestParam String searchTag){
         System.out.println(searchTag);
-        System.out.println(articleService.getArticles(searchTag));
-        if (!Objects.isNull(searchTag)) {
+//        System.out.println(articleService.getArticles(searchTag));
+        if (!searchTag.isEmpty()) {
+            System.out.println(12);
             return  articleService.getArticles(searchTag);
         }
-        else{
-            return articleService.getArticles();
-        }
+        return articleService.getArticles();
+
     }
 
     @GetMapping("/article/{id}")

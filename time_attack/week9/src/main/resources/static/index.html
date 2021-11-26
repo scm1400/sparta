@@ -69,7 +69,7 @@
                 "content": $("#content").val(),
                 "tags": $("#tags").val()
             }
-
+            console.log(article)
             $.ajax({
                 type: "POST",
                 url: "/article",
@@ -89,6 +89,7 @@
                 url: `/articles?searchTag=${tag}`,
                 contentType: 'application/json; charset=utf-8',
                 success: function (response) {
+                    console.log(response)
                     $("#list-post").empty();
                     for (let i = 0; i < response.length; i++) {
                         num = response.length - i;
@@ -100,9 +101,11 @@
 
         function makeListPost(article, index) {
             let tags = '';
-            for(let i = 0 ;  i < article['tags'].length ; i++){
-                console.log(article['tags'][i]);
-                tags += " #"+ article['tags'][i]['name'];
+            if(article[tags] != null) {
+                for (let i = 0; i < article['tags'].length; i++) {
+                    console.log(article['tags'][i]);
+                    tags += " #" + article['tags'][i]['name'];
+                }
             }
 
             let tempHtml = ` <tr>
