@@ -26,7 +26,7 @@ public class Article extends Timestamped {
     @Column(nullable = false)
     private String content;
 
-    @Column()
+    @Column
     private String tags;
 
     @OneToMany(mappedBy="article")

@@ -18,6 +18,7 @@ public class ArticleController {
 
     @PostMapping("/article")
     public Article setArticle(@RequestBody ArticleRequestDto articleRequestDto){
+        System.out.println(articleRequestDto.getTags());
         return articleService.setArticle(articleRequestDto);
     }
 
@@ -26,7 +27,7 @@ public class ArticleController {
         System.out.println(searchTag);
 //        System.out.println(articleService.getArticles(searchTag));
         if (!searchTag.isEmpty()) {
-            System.out.println(12);
+            System.out.println("태그검색");
             return  articleService.getArticles(searchTag);
         }
         return articleService.getArticles();
